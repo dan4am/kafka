@@ -1,0 +1,23 @@
+import json
+from kafka import KafkaConsumer
+from kafka import KafkaProducer
+from time import sleep
+#
+# class improved_Consumer:
+#     def __init__(self, name):
+
+def main():
+    consumer = KafkaConsumer('test_adt_4_out', bootstrap_servers=['localhost:9092'] )
+    # producer = KafkaProducer(value_serializer=lambda m: json.dumps(m).encode("utf-8"),bootstrap_servers=['localhost:9092'])
+    # # producer.send('hello_world', {'key': 'value'})
+    #
+    # for e in range (1000):
+    #     data = {'number' : e}
+    #     print(data)
+    #     producer.send("hello_world", data)
+    #     sleep(3)
+    for message in consumer:
+        print(message.value)
+
+if __name__ == "__main__":
+    main()
